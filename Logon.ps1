@@ -41,18 +41,8 @@ try
     {
         $Host.UI.RawUI.WindowTitle = "Downloading Cloudbase-Init..."
 
-        $osArch = (Get-WmiObject  Win32_OperatingSystem).OSArchitecture
-        if($osArch -eq "64-bit")
-        {
-            $CloudbaseInitMsi = "CloudbaseInitSetup_Beta_x64.msi"
-            $programFilesDir = ${ENV:ProgramFiles(x86)}
-        }
-        else
-        {
-            $CloudbaseInitMsi = "CloudbaseInitSetup_Beta_x86.msi"
-            $programFilesDir = $ENV:ProgramFiles
-        }
-
+        $CloudbaseInitMsi = "CloudbaseInitSetup_Beta_x64.msi"
+        $programFilesDir = ${ENV:ProgramFiles(x86)}
         $CloudbaseInitMsiPath = "$ENV:Temp\$CloudbaseInitMsi"
         $CloudbaseInitMsiUrl = "http://www.cloudbase.it/downloads/$CloudbaseInitMsi"
         $CloudbaseInitMsiLog = "$ENV:Temp\CloudbaseInitSetup_Beta.log"
