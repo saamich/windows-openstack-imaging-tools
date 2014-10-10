@@ -68,6 +68,8 @@ try
 
         $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
         $unattendedXmlPath = "$programFilesDir\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
+        $baseUrl = "https://raw.github.com/saamich/windows-openstack-imaging-tools/master"
+        (new-object System.Net.WebClient).DownloadFile("$baseUrl/Unattend.xml", "$unattendedXmlPath")
         & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/generalize `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
     }
 }
